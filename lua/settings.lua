@@ -1,5 +1,5 @@
 vim.opt.path = ".,/usr/include,,/home/max/Documents**,/home/max/.config**,\
-    /home,/opt/ros/noetic/include"
+   /home,/opt/ros/noetic/include"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false -- use Lualine.nvim instead
