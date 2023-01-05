@@ -1,12 +1,13 @@
 vim.api.nvim_create_autocmd("CmdlineEnter", { command = "set hlsearch"})
 vim.api.nvim_create_autocmd("CmdlineLeave", { command = "set nohlsearch"})
+
 vim.api.nvim_create_autocmd("BufEnter",
    { command = "setlocal formatoptions-=cro" }) -- no auto comment
 
 vim.api.nvim_create_autocmd("BufEnter", {
    pattern = { "*.c" },
    callback = function()
-      vim.opt_local.makeprg = "gcc %"
+      -- vim.opt_local.makeprg = "gcc *.c"
       vim.keymap.set("n", "<Leader>e", ":terminal ./a.out<CR>", { silent = true })
    end
 })
@@ -15,6 +16,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
    pattern = { "*.cpp" },
    callback = function()
       vim.opt_local.makeprg = "g++ %"
+      -- vim.keymap.set("n", "<Leader>e", ":!make execute<CR>", { silent = true })
       vim.keymap.set("n", "<Leader>e", ":terminal ./a.out<CR>", { silent = true })
    end
 })

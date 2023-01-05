@@ -1,8 +1,9 @@
-vim.cmd [[packadd packer.nvim]]
+vim.cmd("packadd packer.nvim")
 
-return require("packer").startup(function()
+return require("packer").startup(function(use)
    use "wbthomason/packer.nvim"
    use "m4xshen/autoclose.nvim"
+   use "windwp/nvim-ts-autotag"
    use {
       "catppuccin/nvim",
       as = "catppuccin"
@@ -15,7 +16,7 @@ return require("packer").startup(function()
    use {
       "nvim-treesitter/nvim-treesitter",
       run = function()
-         local ts_update = require "nvim-treesitter.install".update({ with_sync = true })
+         local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
          ts_update()
       end,
    }
@@ -23,6 +24,12 @@ return require("packer").startup(function()
       "iamcco/markdown-preview.nvim",
       run = function() vim.fn["mkdp#util#install"]() end,
    })
+   use {
+      "nvim-telescope/telescope.nvim", tag = "0.1.0",
+      requires = { {"nvim-lua/plenary.nvim"} }
+   }
+
+   -- lsp
    use "neovim/nvim-lspconfig"
    use "hrsh7th/nvim-cmp"
    use "hrsh7th/cmp-nvim-lsp"
